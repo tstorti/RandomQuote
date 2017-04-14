@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+<!--  Meta  -->
+<meta charset="UTF-8" />
+<title>Random Quote Machine!</title>
+
+<!--  Style  -->
+<style>
+body {
+   margin-top:50px;
+   color: white;
+   background-image: url("http://www.clipartbest.com/cliparts/eTM/7p6/eTM7p6oTn.jpeg");
+}
+h1{
+   text-align: center;
+}
+
+.btn{
+   text-align: center;
+}
+.button {
+   -webkit-transition-duration: 0.4s; /* Safari */
+   transition-duration: 0.4s;
+   color:white;
+   margin:auto;
+   background-color: #000080;
+   padding:15px;
+}
+
+.button:hover {
+   background-color: red;
+   color: white;
+}
+.quoteBox{
+   text-align: left;
+   margin: auto;
+   width: 50%;
+   height: 200px;
+   padding: 25px;
+   background-color: #000080;
+}
+
+</style>
+
+<!--jQuery, linked from a CDN-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+   $(".getMessage").on("click", function(){  
+      //API call for random Trump Quote
+      $.getJSON('https://api.whatdoestrumpthink.com/api/v1/quotes/random', function(json){
+         $(".message").html(json.message);
+         $(".line2").html("-Trump")
+      });
+   });
+});
+</script>
+    
+</head>
+
+<body>    
+   <div class=quoteBox>
+      <h1>Presidential Rambling</h1>
+      <div>
+         <p class=message></p>
+         <p class=line2></p>
+      </div>
+   </div>
+   <div class=btn>
+      <button class = "getMessage button">Get Message</button>
+   </div>
+</body>
+</html>
