@@ -2,74 +2,37 @@
 <html>
 
 <head>
-  
-<!--  Meta  -->
-<meta charset="UTF-8" />
-<title>Random Quote Machine!</title>
 
-<!--  Style  -->
-<style>
-body {
-   margin-top:50px;
-   color: white;
-}
-h1{
-   text-align: center;
-}
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Random Trump Quote Machine</title>
+   <!--Add Bootstrap from CDN-->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+   <!-- Add Bootstrap theme from Bootswatch-->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="css/style.css">  
 
-.btn{
-   text-align: center;
-}
-.button {
-   -webkit-transition-duration: 0.4s; /* Safari */
-   transition-duration: 0.4s;
-   color:white;
-   margin:auto;
-   background-color: #000080;
-   padding:15px;
-}
-
-.button:hover {
-   background-color: red;
-   color: white;
-}
-.quoteBox{
-   text-align: left;
-   margin: auto;
-   width: 50%;
-   height: 200px;
-   padding: 25px;
-   background-color: #000080;
-}
-
-</style>
-
-<!--jQuery, linked from a CDN-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-   $(".getMessage").on("click", function(){  
-      //API call for random Trump Quote
-      $.getJSON('https://api.whatdoestrumpthink.com/api/v1/quotes/random', function(json){
-         $(".message").html(json.message);
-         $(".line2").html("-Trump")
-      });
-   });
-});
-</script>
+   <!--jQuery, linked from a CDN-->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+   <script type="text/javascript" src="javascript/logic.js"></script>
     
 </head>
 
 <body>    
-   <div class=quoteBox>
-      <h1>Presidential Rambling</h1>
+   <div class="container">
+      <div class="container panel panel-default">
+         <h1 class="padBot">Presidential Rambling</h1>
+         <div class="padBot">
+            <button id="getMessage" class = "btn">Get Message</button>  
+         </div>
+      </div>
       <div>
-         <p class=message></p>
-         <p class=line2></p>
+         <blockquote id="quoteBlock" style="visibility:hidden">
+            <p id="message"></p>
+            <footer>Trump</footer>
+         </blockquote>
       </div>
    </div>
-   <div class=btn>
-      <button class = "getMessage button">Get Message</button>
-   </div>
+   
 </body>
 </html>
